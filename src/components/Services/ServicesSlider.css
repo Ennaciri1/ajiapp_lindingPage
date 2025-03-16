@@ -1,0 +1,82 @@
+/*
+  1) Remise à zéro des marges/padding du body (utile si ce n’est pas déjà fait)
+  2) .services-slider-wrapper pour centrer le bloc entier
+  3) .services-slider-container pour la mise en page du titre + slider
+  4) Ajustements du slider, images, etc.
+*/
+
+/* Remise à zéro du body (au besoin) */
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit; /* Tous les éléments utilisent box-sizing: border-box */
+  }
+  
+  /* 
+    1) Le wrapper: prend toute la hauteur de la fenêtre et utilise Flex 
+       pour centrer verticalement et horizontalement le slider 
+  */
+  .services-slider-wrapper {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
+    min-height: 100vh;       /* Occupe toute la hauteur disponible */
+    /* Option : couleur de fond, image de fond, etc. */
+    /* background: #f0f0f0; */
+  }
+  
+  /* 
+    2) Le conteneur du slider et du titre 
+       -> On le limite en largeur et on le centre 
+  */
+  .services-slider-container {
+    width: 80%;
+    max-width: 1300px;
+    margin: 0 auto;        /* Centre horizontalement si non flex */
+    text-align: center;
+    padding: 1rem 1rem;    /* Espace intérieur */
+
+  
+  }
+  
+  /* Titre de la section */
+  .services-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Chaque slide */
+  .service-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+  
+  /* L'image de chaque service */
+  .service-image {
+    width: 320px;       /* Pour être 100% du parent */
+    max-width: 500px;   /* Largeur max sur écrans plus larges */
+    height: auto;
+    margin-bottom: 1rem;
+    object-fit: cover;  /* Rogne l'image si nécessaire */
+  }
+  
+  /* Media queries pour adapter sur mobile */
+  @media (max-width: 768px) {
+    .services-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+  
+    .service-image {
+      max-width: 200px; /* rétrécit un peu l'image sur mobile */
+    }
+  }
+  

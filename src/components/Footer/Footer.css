@@ -1,0 +1,123 @@
+/* 
+   Footer pleine largeur
+   Fond noir, angles arrondis en haut
+*/
+.aji-footer {
+  width: 100%;
+  background-color: #000;  /* Fond noir */
+  color: #fff;             /* Texte blanc */
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 40px 20px;      /* Espace intérieur */
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Logo centré */
+.footer-logo {
+  text-align: center;
+  margin-bottom: 40px; /* Espace sous le logo */
+}
+
+.footer-logo img {
+  width: 90px;
+  height: auto;
+  /* Ajustez la taille du logo selon vos préférences */
+}
+
+/* Conteneur 2 colonnes (sur desktop) */
+.footer-content {
+  max-width: 1200px;  /* Largeur max si on veut limiter le contenu */
+  margin: 0 auto;     /* Centre horizontalement */
+  display: flex; 
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 20px;          /* Espace entre les blocs quand ils wrap */
+}
+
+/* Bloc gauche (icône + texte) */
+.footer-left {
+  display: flex;
+  align-items: center;
+}
+
+/* Icône e‑mail */
+.email-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 15px;
+}
+
+/* Texte e-mail */
+.email-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.email-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Bloc droit : text-align right */
+.footer-right {
+  text-align: right;
+}
+
+/* ========== TABLETTE (max-width: 768px) ========== */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* empile les blocs */
+    align-items: center;
+  }
+  
+  .footer-left,
+  .footer-right {
+    text-align: center;
+  }
+  
+  .footer-right {
+    margin-top: 20px;
+  }
+}
+
+/* ========== MOBILE (max-width: 480px) ========== */
+@media (max-width: 100px) {
+  /* Réduire le padding global pour économiser l'espace */
+  .aji-footer {
+    padding: 20px 15px;
+  }
+
+  /* Logo plus petit sur mobile */
+  .footer-logo img {
+    width: 70px; 
+  }
+
+  /* Réduire l'espace en bas du logo */
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+
+  /* Ajuster l'espacement */
+  .footer-content {
+    gap: 15px;
+  }
+
+  /* Si vous voulez un email-icon plus petit */
+  .email-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .footer-right {
+    margin-top: 15px;
+    font-size: 0.9rem; /* un texte légèrement plus petit si besoin */
+  }
+}

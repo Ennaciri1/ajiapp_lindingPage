@@ -1,0 +1,106 @@
+/* 
+  SECTION PRINCIPALE : 
+  - Possibilité de fond 
+  - Padding global 
+*/
+.why-aji-section {
+  padding: 3rem 1rem;
+  /* background: ... */
+}
+
+/* 
+  CONTENEUR INTERNE : 
+  - Largeur max, 
+  - Centrage, 
+  - Texte centré 
+*/
+.why-aji-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* TITRE PRINCIPAL */
+.why-aji-title {
+  font-size: 5rem;    /* Titre très grand sur desktop */
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  margin-top: -1rem;  /* Marges négatives pour un effet stylisé */
+}
+
+/* SOUS-TITRE */
+.why-aji-subtitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* DESCRIPTION */
+.why-aji-subdesc {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto 1.5rem; /* Centre le texte et marge en bas */
+}
+
+/* 
+  CONTENEUR DES IMAGES :
+  - Empilées en colonne, centrées 
+*/
+.phone-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* IMAGE DU TÉLÉPHONE 
+   - Marges négatives pour un effet “superposé” sur desktop 
+*/
+.phone-image {
+  width: 100%;
+  max-width: 1000px; 
+  height: auto;
+  margin-bottom: -10rem;
+  margin-top: -9rem;
+}
+
+/* ======================= MEDIA QUERIES ======================= */
+
+/* === Tablettes : max-width: 768px === */
+@media (max-width: 768px) {
+  .why-aji-title {
+    font-size: 2.2rem;
+    margin-top: 0;     /* on enlève la marge négative sur mobile */
+    margin-bottom: 0;  
+  }
+  .why-aji-subtitle {
+    font-size: 1.5rem;
+  }
+  .why-aji-subdesc {
+    font-size: 1rem;
+  }
+  /* On réduit les marges négatives de l'image */
+  .phone-image {
+    max-width: 400px;      /* image moins large */
+    margin-top: -2rem;     /* marge négative réduite */
+    margin-bottom: -3rem;  /* idem */
+  }
+}
+
+/* === Mobiles : max-width: 480px === */
+@media (max-width: 480px) {
+  .why-aji-title {
+    font-size: 1.8rem;
+  }
+  .why-aji-subtitle {
+    font-size: 1.3rem;
+  }
+  /* On peut carrément supprimer les marges négatives 
+     pour éviter tout problème sur très petit écran */
+  .phone-image {
+    max-width: 250px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}

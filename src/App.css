@@ -1,38 +1,81 @@
-.App {
+/* ==== RESET DE BASE ==== */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Pour que tous les éléments héritent du box-sizing: border-box */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* ==== CONTENEUR PRINCIPAL ==== */
+.app {
+  /* Image de fond, éventuellement redimensionnée pour occuper toute la zone */
+  background: url('./assets/backround.svg') center / cover no-repeat;
+  min-height: 100vh; /* la page occupe la hauteur complète de l’écran */
+  
+  /* Flex container pour gérer l’agencement */
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* centre horizontalement */
+  justify-content: flex-start; /* place le contenu en haut verticalement */
+
+  /* Pas de padding ou margin pour éviter l’espace en haut */
+  padding: 0;
+  margin: 0;
+}
+
+/* ==== CONTENEUR GÉNÉRIQUE POUR LE CONTENU ==== */
+.container {
+  /* Pour centrer le contenu horizontalement et limiter la largeur */
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  /* Aucun padding top pour éviter l’espace vertical */
+  /* Vous pouvez mettre du padding sur les côtés ou en bas si nécessaire */
+  padding: 0 1rem 2rem; /* Ex: 1rem latéral, 2rem en bas */
+}
+
+/* ==== TITRES, TEXTES ==== */
+/* On remet à zéro leurs marges par défaut */
+h1, h2, h3, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Exemple d'une classe de titre de section */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+
+  /* Si vous voulez un léger espace autour du titre, vous pouvez l’ajouter ici */
+  margin-top: 1rem;   /* espace en haut */
+  margin-bottom: 1rem;/* espace en bas */
+
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* ==== MEDIA QUERIES (Exemple) ==== */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Écrans max 768px */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Écrans max 480px */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
   }
 }

@@ -1,0 +1,109 @@
+/**********************************************
+ * STYLES DU HEADER
+ **********************************************/
+.header {
+  width: 100%;
+
+  position: relative;
+  z-index: 999; /* Le header reste au-dessus d'autres éléments */
+}
+
+/* .header-content hérite déjà de .container (max-width, margin auto, etc.).
+   On ajoute un flex pour répartir logo, nav, CTA */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Logo à gauche, nav au milieu, CTA à droite (ou ajustez) */
+  padding: 1rem 0; /* Espace vertical interne */
+}
+
+/* LOGO */
+.header-logo img {
+  height: 80px; /* Ajustez selon la taille désirée */
+  width: auto;
+}
+
+/**********************************************
+ * NAVIGATION
+ **********************************************/
+.header-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem; /* Espace horizontal entre les liens */
+  margin: 0;
+  padding: 0;
+}
+
+/* Liens du menu */
+.header-nav ul li a {
+  text-decoration: none;
+  color: #333; /* Couleur du texte */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Effet hover */
+.header-nav ul li a:hover {
+  color: #8B181A; /* Couleur accent (par ex. rouge bordeaux) */
+}
+
+/**********************************************
+ * BOUTON CTA
+ **********************************************/
+.header-cta .btn {
+  display: inline-block;
+  background-color: #8B181A;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.header-cta .btn:hover {
+  background-color: #a02024; /* un rouge un peu plus clair au survol */
+}
+
+/**********************************************
+ * RESPONSIVE
+ **********************************************/
+@media (max-width: 768px) {
+  /* Sur tablette / mobile, on peut diminuer l'espace du header,
+     ou transformer la nav, etc. */
+     .hide-on-mobile {
+      display: none !important; 
+    }
+  .header-content {
+    padding: 1rem;
+    flex-wrap: wrap; /* Pour passer le menu en dessous du logo si besoin */
+  }
+
+  /* Par exemple, on peut réduire la taille du logo */
+  .header-logo img {
+    height: 55px;
+  }
+
+  .header-nav ul {
+    gap: 1rem; /* Moins d'espace entre les liens */
+  }
+
+  /* Si vous voulez empiler menu et CTA, vous pouvez ajuster:
+    .header-nav, .header-cta {
+      margin-top: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+   */
+}
+
+@media (max-width: 480px) {
+  /* Sur très petits écrans, vous pouvez encore réduire ou passer en menu burger */
+  .header-logo img {
+    height: 30px;
+  }
+
+  .header-nav ul {
+    gap: 0.5rem;
+  }
+}

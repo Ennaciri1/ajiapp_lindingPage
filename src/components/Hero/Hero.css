@@ -1,0 +1,166 @@
+/* src/components/Hero/Hero.css */
+
+/* La section Hero peut avoir un fond ou une couleur */
+.hero {
+  width: 100%;
+  padding: 4rem 0;   /* Espace vertical en haut et en bas */
+  overflow-x: hidden; /* Empêche le défilement horizontal si l'image dépasse */
+}
+
+/* hero-content utilise flex pour 2 colonnes */
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;          /* Passe en mode "wrap" si l'écran est trop étroit */
+  justify-content: space-between; 
+  align-items: center;      /* Centre verticalement */
+  max-width: 1200px;        /* Limite la largeur maximale */
+  margin: 0 auto;           /* Centre le contenu horizontalement */
+  padding: 0 2rem;          /* Espace sur les côtés */
+}
+
+/* COLONNE DE L'IMAGE */
+.hero-image {
+  flex: 1 1 50%;           /* Ajusté pour meilleur équilibre */
+  text-align: center;      /* Centre l'image horizontalement */
+  position: relative;      /* Pour le positionnement */
+  max-width: 990px;        /* Corrigé: 7000px était une valeur excessive */
+}
+
+.hero-image img {
+  width: 100%;             /* L'image prend toute la largeur de sa colonne */
+  max-width: 550px;        /* Limite la taille maximale */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* COLONNE DU TEXTE + BOUTONS */
+.hero-text {
+  flex: 1 1 45%;           /* Ajusté pour meilleur équilibre */
+  padding-right: 2rem;     /* Espace à droite du texte */
+}
+
+.hero-text h1 {
+  font-size: 3.5rem;       /* Taille réduite pour être plus adaptative */
+  font-weight: 800;        /* Gras */
+  margin-bottom: 2rem;     /* Espace sous le titre */
+  line-height: 1.2;
+}
+
+.hero-text p {
+  font-size: 1.2rem;       /* Plus petit que le titre */
+  font-weight: 500;        /* Normal */
+  color: #555;             /* Couleur de texte plus douce */
+  margin-bottom: 3rem;     /* Espace sous le sous-titre */
+}
+
+/* Les logos de téléchargement */
+.store-buttons {
+  display: flex;
+  gap: 1.5rem;              /* Plus d'espace entre les boutons */
+  flex-wrap: wrap;         /* Si trop serré, passe sur la ligne suivante */
+}
+
+.store-buttons a {
+  display: block;          /* Permet de mieux contrôler les dimensions */
+}
+
+.store-buttons img {
+  width: 960px;            /* Taille ajustée à 180px standard */
+  max-width: 920px;         /* S'assure que l'image ne dépasse pas */
+  height: auto;            /* Maintient les proportions */
+}
+
+/* Grand écran: ajustements pour meilleure proportion */
+@media (min-width: 1400px) {
+  .hero-content {
+    max-width: 1400px;
+  }
+  
+  .hero-text h1 {
+    font-size: 4.5rem;
+  }
+  
+  .store-buttons img {
+    width: 200px;          /* Plus grand sur très grands écrans */
+  }
+}
+
+/* Écran moyen: tablettes et petits ordinateurs */
+@media (max-width: 992px) {
+  .hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-text {
+    padding-right: 1rem;
+  }
+  
+  .store-buttons img {
+    width: 160px;          /* Légèrement plus petit sur écrans moyens */
+  }
+}
+
+/* RESPONSIVITÉ sur mobile */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 0;
+  }
+  
+  .hero-content {
+    flex-direction: column-reverse; /* Place l'image en dessous du texte */
+  }
+  
+  .hero-image,
+  .hero-text {
+    flex: 1 1 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .hero-text {
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hero-image img {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  
+  .store-buttons {
+    justify-content: center;
+    width: 100%;           /* Corrigé: 30px était trop petit */
+    gap: 1rem;             /* Moins d'espace sur mobile */
+  }
+  
+  .store-buttons img {
+    width: 150px;          /* Taille ajustée pour mobile */
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+  
+  .store-buttons {
+    gap: 0.8rem;
+  }
+  
+  .store-buttons img {
+    width: 135px;          /* Plus petit sur très petits écrans */
+  }
+}
