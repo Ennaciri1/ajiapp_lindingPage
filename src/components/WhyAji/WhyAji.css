@@ -70,10 +70,10 @@
 /* PHONE IMAGE - Remove extreme negative margins */
 .phone-image {
   width: 100%;
-  max-width: 800px; /* Reduced from 1000px */
+  max-width: 1000px; /* Reduced from 1000px */
   height: auto;
   margin-bottom: -5rem; /* Reduced from -10rem */
-  margin-top: -4rem; /* Reduced from -9rem */
+  margin-top: -8rem; /* Reduced from -9rem */
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1)); /* Add subtle shadow */
 }
 
@@ -125,7 +125,7 @@
   }
   
   .phone-image {
-    max-width: 300px;
+    max-width: 360px;
     margin-top: -1rem;
     margin-bottom: -2rem;
   }

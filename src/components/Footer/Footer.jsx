@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.css';
-import AjiLogo from '../../assets/logo.svg';
+import AjiLogo from '../../assets/logoWhite.svg';
 import EmailIcon from '../../assets/email-icon.svg';
 
 const Footer = () => {

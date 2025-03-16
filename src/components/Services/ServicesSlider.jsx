@@ -104,32 +104,27 @@ const ServicesSlider = () => {
     { 
       img: foodImg,
       alt: "Food", 
-      title: "Food",
-      description: "Discover local cuisine" 
+     
     },
     { 
       img: flightImg,
       alt: "Flight", 
-      title: "Flight",
-      description: "Book your flights" 
+    
     },
     { 
       img: discoverImg,
       alt: "Discover", 
-      title: "Discover",
-      description: "Explore Morocco" 
+      
     },
     { 
       img: esimImg,
       alt: "eSIM", 
-      title: "eSIM",
-      description: "Stay connected" 
+     
     },
     { 
       img: accommodationImg,
       alt: "Accommodation", 
-      title: "Accommodation",
-      description: "Find the perfect stay" 
+     
     }
   ];
 
@@ -143,8 +138,7 @@ const ServicesSlider = () => {
           {services.map((service, index) => (
             <div className="service-slide" key={index}>
               <img src={service.img} alt={service.alt} className="service-image" />
-              <h3 className="service-title">{service.title}</h3>
-              <p className="service-description">{service.description}</p>
+             
             </div>
           ))}
         </Slider>

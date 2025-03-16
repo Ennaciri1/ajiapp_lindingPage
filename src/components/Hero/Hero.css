@@ -160,12 +160,12 @@
   }
   
   .hero-image img {
-    max-width: 80%;
+    max-width: 90%;
     margin: 0 auto;
   }
   
   .store-buttons {
-    justify-content: center;
+    justify-content:center ;
     width: 100%;
     gap: 1.8rem; /* Increased gap for better spacing */
     align-self: center; /* Center with the text */
@@ -183,9 +183,12 @@
   }
   
   .store-buttons {
-    flex-direction: column; /* Stack buttons on very small screens */
+    display: flex;
+    flex-direction: row; /* Stack buttons on very small screens */
     align-items: center;
+    justify-content: center;
     gap: 1.5rem;
+    flex-wrap: wrap;
   }
   
   .store-buttons img {
