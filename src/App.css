@@ -1,4 +1,4 @@
-/* ==== RESET DE BASE ==== */
+/* ==== BASE RESET ==== */
 html, body {
   margin: 0;
   padding: 0;
@@ -6,76 +6,179 @@ html, body {
   height: 100%;
   box-sizing: border-box;
   font-family: 'Arial', sans-serif;
+  scroll-behavior: smooth; /* Added for smooth scrolling to sections */
+  color: #333;
+  line-height: 1.6;
 }
 
-/* Pour que tous les éléments héritent du box-sizing: border-box */
+/* Ensure all elements inherit box-sizing */
 *, *::before, *::after {
   box-sizing: inherit;
 }
 
-/* ==== CONTENEUR PRINCIPAL ==== */
+/* ==== MAIN CONTAINER ==== */
 .app {
-  /* Image de fond, éventuellement redimensionnée pour occuper toute la zone */
-  background: url('./assets/backround.svg') center / cover no-repeat;
-  min-height: 100vh; /* la page occupe la hauteur complète de l’écran */
+  /* Keep the background image */
+  background: url('./assets/backround.svg') center ;
+  min-height: 100vh;
   
-  /* Flex container pour gérer l’agencement */
+  /* Flex container for layout */
   display: flex;
   flex-direction: column;
-  align-items: center;      /* centre horizontalement */
-  justify-content: flex-start; /* place le contenu en haut verticalement */
+  align-items: center;
+  justify-content: flex-start;
 
-  /* Pas de padding ou margin pour éviter l’espace en haut */
+  /* No padding/margin for full-width layout */
   padding: 0;
   margin: 0;
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
-/* ==== CONTENEUR GÉNÉRIQUE POUR LE CONTENU ==== */
+/* Remove the overlay that's conflicting with the background image */
+/* .app:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+  z-index: 0;
+  pointer-events: none;
+} */
+
+/* ==== GENERIC CONTENT CONTAINER ==== */
 .container {
-  /* Pour centrer le contenu horizontalement et limiter la largeur */
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-
-  /* Aucun padding top pour éviter l’espace vertical */
-  /* Vous pouvez mettre du padding sur les côtés ou en bas si nécessaire */
-  padding: 0 1rem 2rem; /* Ex: 1rem latéral, 2rem en bas */
+  padding: 0 2rem 2rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* ==== TITRES, TEXTES ==== */
-/* On remet à zéro leurs marges par défaut */
+/* ==== HEADINGS & TEXT RESET ==== */
 h1, h2, h3, p {
   margin: 0;
   padding: 0;
 }
 
-/* Exemple d'une classe de titre de section */
+/* Section title (may be used across components) */
 .section-title {
   font-size: 2.5rem;
-  font-weight: bold;
+  font-weight: 700;
   color: #333;
+  margin: 2rem 0 1.5rem;
+  text-align: center;
+  position: relative;
+}
 
-  /* Si vous voulez un léger espace autour du titre, vous pouvez l’ajouter ici */
-  margin-top: 1rem;   /* espace en haut */
-  margin-bottom: 1rem;/* espace en bas */
+/* Add decorative underline to section titles */
+.section-title:after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #8B181A;
+  margin: 1rem auto 0;
+}
 
+/* Default paragraph style */
+p {
+  margin-bottom: 1rem;
+}
+
+/* Add button styles that can be used throughout the app */
+.btn {
+  display: inline-block;
+  background-color: #8B181A;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: #a02024;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Secondary button style */
+.btn-outline {
+  background-color: transparent;
+  color: #8B181A;
+  border: 2px solid #8B181A;
+}
+
+.btn-outline:hover {
+  background-color: #8B181A;
+  color: #fff;
+}
+
+/* ==== UTILITY CLASSES ==== */
+.text-center {
   text-align: center;
 }
 
-/* ==== MEDIA QUERIES (Exemple) ==== */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
 
-/* Écrans max 768px */
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+/* ==== MEDIA QUERIES ==== */
+
+/* Tablets */
 @media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem 1.5rem;
+  }
+  
   .section-title {
     font-size: 2rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 1.5rem 0 1rem;
+  }
+  
+  .section-title:after {
+    width: 50px;
+    margin-top: 0.8rem;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
   }
 }
 
-/* Écrans max 480px */
+/* Mobile phones */
 @media (max-width: 480px) {
+  .container {
+    padding: 0 1rem 1rem;
+  }
+  
   .section-title {
     font-size: 1.8rem;
+    margin: 1.2rem 0 0.8rem;
+  }
+  
+  .section-title:after {
+    width: 40px;
+    height: 2px;
+    margin-top: 0.6rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }

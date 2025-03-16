@@ -2,8 +2,8 @@
  * 1) SECTION GLOBALE
  ************************************************************/
  .how-it-works-section {
-  padding: 3rem 1rem;
-  /* vous pouvez ajouter un background si désiré */
+  padding: 5rem 1rem;
+
 }
 
 /************************************************************
@@ -14,26 +14,26 @@
   border-radius: 20px;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 3rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  text-align: center; 
+  padding: 4rem 3rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
 
 /************************************************************
  * 3) TITRES
  ************************************************************/
 .how-it-works-title {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: #000;
+  margin-bottom: 0.75rem;
+  color: #333;
 }
 
 .how-it-works-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 400;
-  color: #999;
-  margin-bottom: 2rem;
+  color: #888;
+  margin-bottom: 3.5rem;
 }
 
 /************************************************************
@@ -42,46 +42,60 @@
 .steps-row {
   display: flex;
   align-items: center;
-  justify-content: space-around; 
-  flex-wrap: wrap;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0; /* We'll use positioning for the lines */
+  position: relative;
 }
 
-/* Chaque bloc d’étape */
+/* Chaque bloc d'étape */
 .step {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 180px;
+  width: 180px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Cercle rouge numéroté */
 .circle {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border: 4px solid #8B181A;
-  color: #000; 
+  color: #333;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
+  background-color: white;
+  transition: all 0.3s ease;
 }
 
-/* Texte de l’étape */
+/* Add hover effect */
+.step:hover .circle {
+  background-color: #8B181A;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Texte de l'étape */
 .step-text {
-  font-size: 1rem;
-  color: #333;
+  font-size: 1.1rem;
+  color: #444;
   margin: 0;
+  font-weight: 500;
 }
 
-/* Trait rouge horizontal (desktop) */
+/* Trait rouge horizontal (desktop) - now positioned absolutely */
 .line {
-  width: 80px;
+  width: 100px;
   height: 3px;
   background-color: #8B181A;
+  position: relative;
+  z-index: 1;
 }
 
 /************************************************************
@@ -91,19 +105,30 @@
 /* === Tablettes : max-width: 768px === */
 @media (max-width: 768px) {
   .how-it-works-container {
-    padding: 1.5rem;
+    padding: 3rem 2rem;
   }
-  .circle {
-    width: 50px;
-    height: 50px;
+  
+  .how-it-works-title {
+    font-size: 2.3rem;
+  }
+  
+  .how-it-works-subtitle {
     font-size: 1.2rem;
+    margin-bottom: 2.5rem;
   }
+  
+  .circle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  
   .line {
     width: 60px;
-    height: 2px;
   }
-  .how-it-works-title {
-    font-size: 2rem;
+  
+  .step {
+    width: 150px;
   }
 }
 
@@ -111,48 +136,66 @@
    -> On passe en "timeline" verticale
 */
 @media (max-width: 480px) {
-
-  .steps-row {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* On va utiliser un trait vertical principal */
+  .how-it-works-section {
+    padding: 3rem 1rem;
   }
 
-  /* On va masquer la ligne horizontale .line, 
-     car on va en faire un "vertical-line" à la place */
+  .how-it-works-container {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .how-it-works-title {
+    font-size: 2rem;
+  }
+  
+  .how-it-works-subtitle {
+    margin-bottom: 2rem;
+  }
+
+  .steps-row {
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  
+  /* Add vertical line connecting the steps */
+  .steps-row:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background-color: #8B181A;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  /* Hide horizontal lines */
   .line {
     display: none;
   }
 
-  /* Option 1 : on utilise un pseudo-élément 
-     pour dessiner la ligne verticale globale 
-     entre les cercles 
-  */
- 
-  /* Chaque step est placé sur cette ligne */
   .step {
+    width: 100%;
+    margin-bottom: 2.5rem;
     position: relative;
-    z-index: 1; 
-    margin-bottom: 1rem; /* espace entre steps */
   }
-
-  /* Aligne le cercle au milieu (sur la ligne) */
-  .circle {
-    margin-bottom: 0.5rem;
-    /* On peut ajuster la taille encore plus petite si besoin */
-  }
-
-  /* Le dernier step n’a pas besoin de marge en bas */
+  
   .step:last-child {
     margin-bottom: 0;
   }
 
-  /* On peut réduire encore la taille si on veut */
   .circle {
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
+    font-size: 1.3rem;
+    z-index: 2;
+    background-color: white;
+  }
+  
+  .step-text {
     font-size: 1rem;
+    margin-top: 0.5rem;
   }
 }

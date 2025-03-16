@@ -1,9 +1,8 @@
 /**********************************************
  * STYLES DU HEADER
  **********************************************/
-.header {
+ .header {
   width: 100%;
-
   position: relative;
   z-index: 999; /* Le header reste au-dessus d'autres éléments */
 }
@@ -13,13 +12,15 @@
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Logo à gauche, nav au milieu, CTA à droite (ou ajustez) */
-  padding: 1rem 0; /* Espace vertical interne */
+  justify-content: space-between;
+  padding: 1rem 2rem; /* Increased horizontal padding */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* LOGO */
 .header-logo img {
-  height: 80px; /* Ajustez selon la taille désirée */
+  height: 80px; /* Slightly reduced for better proportion */
   width: auto;
 }
 
@@ -29,7 +30,7 @@
 .header-nav ul {
   display: flex;
   list-style: none;
-  gap: 1.5rem; /* Espace horizontal entre les liens */
+  gap: 2rem; /* Increased gap for better spacing */
   margin: 0;
   padding: 0;
 }
@@ -37,14 +38,32 @@
 /* Liens du menu */
 .header-nav ul li a {
   text-decoration: none;
-  color: #333; /* Couleur du texte */
-  font-weight: 500;
+  color: #333;
+  font-weight: 900;
   transition: color 0.3s ease;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  position: relative;
 }
 
-/* Effet hover */
+/* Hover effect with underline */
 .header-nav ul li a:hover {
-  color: #8B181A; /* Couleur accent (par ex. rouge bordeaux) */
+  color: #8B181A;
+}
+
+.header-nav ul li a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #8B181A;
+  transition: width 0.3s ease;
+}
+
+.header-nav ul li a:hover:after {
+  width: 100%;
 }
 
 /**********************************************
@@ -58,52 +77,95 @@
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(139, 24, 26, 0.3);
 }
 
 .header-cta .btn:hover {
-  background-color: #a02024; /* un rouge un peu plus clair au survol */
+  background-color: #a02024;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(139, 24, 26, 0.4);
+}
+
+/* Mobile menu button */
+.mobile-menu-button {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.mobile-menu-button span {
+  width: 100%;
+  height: 3px;
+  background-color: #8B181A;
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 /**********************************************
  * RESPONSIVE
  **********************************************/
 @media (max-width: 768px) {
-  /* Sur tablette / mobile, on peut diminuer l'espace du header,
-     ou transformer la nav, etc. */
-     .hide-on-mobile {
-      display: none !important; 
-    }
   .header-content {
     padding: 1rem;
-    flex-wrap: wrap; /* Pour passer le menu en dessous du logo si besoin */
   }
-
-  /* Par exemple, on peut réduire la taille du logo */
+  
   .header-logo img {
-    height: 55px;
+    height: 48px;
   }
 
+  .mobile-menu-button {
+    display: flex;
+  }
+  
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  .header-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    padding: 80px 2rem 2rem;
+    transition: right 0.3s ease;
+    z-index: 9;
+  }
+  
+  .header-nav.mobile-menu-open {
+    right: 0;
+    display: block !important;
+  }
+  
   .header-nav ul {
-    gap: 1rem; /* Moins d'espace entre les liens */
+    flex-direction: column;
+    gap: 1.5rem;
   }
-
-  /* Si vous voulez empiler menu et CTA, vous pouvez ajuster:
-    .header-nav, .header-cta {
-      margin-top: 1rem;
-      width: 100%;
-      text-align: center;
-    }
-   */
+  
+  .header-nav ul li a {
+    font-size: 1.2rem;
+    display: block;
+    padding: 0.5rem 0;
+  }
 }
 
 @media (max-width: 480px) {
-  /* Sur très petits écrans, vous pouvez encore réduire ou passer en menu burger */
   .header-logo img {
-    height: 30px;
+    height: 36px;
   }
-
-  .header-nav ul {
-    gap: 0.5rem;
+  
+  .header-cta .btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
   }
 }

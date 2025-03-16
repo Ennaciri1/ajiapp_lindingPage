@@ -1,98 +1,179 @@
-/* Conteneur principal pour TOUT centrer au milieu de la page */
+/* Enhanced Download section styling */
 .app-download-container {
   width: 100%;
-
   display: flex;
-  justify-content: center; /* Centre horizontalement */
-  align-items: center;     /* Centre verticalement */
-
-  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
   font-family: Arial, sans-serif;
+  
+  position: relative;
+  overflow: hidden;
 }
 
-/* Carte principale */
+/* Add decorative elements */
+
+
+
+
+/* Main card with gradient background */
 .download-card {
-  background-color: #8B181A;
-  border-radius: 16px;
+  background: linear-gradient(135deg, #8B181A 0%, #c02427 100%);
+  border-radius: 24px;
   max-width: 1000px;
   width: 100%;
-  padding: 50px 30px;
+  padding: 60px 40px;
   text-align: center;
   color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 30px rgba(139, 24, 26, 0.3);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
-/* Titre "JOIN THE OTHERS" */
+/* Add subtle pattern overlay */
+.download-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+  z-index: -1;
+}
+
+/* Subtitle with enhanced styling */
 .card-subtitle {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 20px;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
+  opacity: 0.9;
+  position: relative;
+  display: inline-block;
 }
 
-/* Grand titre */
+/* Add decorative line under subtitle */
+.card-subtitle:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 2px;
+  background-color: white;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Main title with enhanced styling */
 .card-title {
-  font-size: 59px;
-  font-weight: bold;
-  margin-bottom: 30px;
+  font-size: 54px;
+  font-weight: 800;
+  margin: 30px 0;
   line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Description */
+/* Description with improved readability */
 .card-description {
   font-size: 20px;
   margin-bottom: 40px;
-  line-height: 1.5;
+  line-height: 1.6;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
 }
 
-/* Conteneur des boutons */
+/* Store buttons container */
 .store-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
 }
 
-/* Liens cliquables pour les stores */
+/* Store links with enhanced hover effect */
 .store-link {
   display: inline-block;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
 }
 
 .store-link:hover {
-  transform: scale(1.05);
+  transform: translateY(-5px) scale(1.05);
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.3));
 }
 
-/* Images des stores */
+/* Store button images */
 .store-button {
-  height: 56px;
-  border-radius: 8px;
+  height: 60px;
+  border-radius: 12px;
 }
 
-/* Responsif : tablettes */
+/* Responsive: tablets */
 @media (max-width: 768px) {
+  .app-download-container {
+    padding: 40px 15px;
+  }
+  
+  .download-card {
+    padding: 40px 25px;
+  }
+  
   .card-title {
-    font-size: 40px;
+    font-size: 42px;
+    margin: 25px 0;
   }
   
   .card-description {
     font-size: 18px;
+    margin-bottom: 30px;
+  }
+  
+  .card-subtitle {
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+  
+  .store-button {
+    height: 52px;
+  }
+}
+
+/* Responsive: smartphones */
+@media (max-width: 480px) {
+  .app-download-container {
+    padding: 30px 10px;
   }
   
   .download-card {
     padding: 30px 20px;
+    border-radius: 20px;
   }
-}
-
-/* Responsif : smartphones */
-@media (max-width: 480px) {
+  
   .card-title {
     font-size: 32px;
+    margin: 20px 0;
+  }
+  
+  .card-description {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+  
+  .card-subtitle {
+    font-size: 14px;
+    margin-bottom: 15px;
   }
   
   .store-buttons {
-    flex-direction: column;
-    align-items: center;
+    gap: 15px;
+  }
+  
+  .store-button {
+    height: 48px;
   }
 }

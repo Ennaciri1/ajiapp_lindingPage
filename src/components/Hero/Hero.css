@@ -1,92 +1,105 @@
 /* src/components/Hero/Hero.css */
 
-/* La section Hero peut avoir un fond ou une couleur */
 .hero {
   width: 100%;
-  padding: 4rem 0;   /* Espace vertical en haut et en bas */
-  overflow-x: hidden; /* Empêche le défilement horizontal si l'image dépasse */
+  padding: 6rem 0 4rem;
+  overflow-x: hidden;
 }
 
-/* hero-content utilise flex pour 2 colonnes */
+/* hero-content uses flex for 2 columns */
 .hero-content {
   display: flex;
-  flex-wrap: wrap;          /* Passe en mode "wrap" si l'écran est trop étroit */
-  justify-content: space-between; 
-  align-items: center;      /* Centre verticalement */
-  max-width: 1200px;        /* Limite la largeur maximale */
-  margin: 0 auto;           /* Centre le contenu horizontalement */
-  padding: 0 2rem;          /* Espace sur les côtés */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* COLONNE DE L'IMAGE */
+/* IMAGE COLUMN */
 .hero-image {
-  flex: 1 1 50%;           /* Ajusté pour meilleur équilibre */
-  text-align: center;      /* Centre l'image horizontalement */
-  position: relative;      /* Pour le positionnement */
-  max-width: 990px;        /* Corrigé: 7000px était une valeur excessive */
+  flex: 1 1 45%;
+  text-align: center;
+  position: relative;
+  max-width: 500px;
 }
 
 .hero-image img {
-  width: 100%;             /* L'image prend toute la largeur de sa colonne */
-  max-width: 550px;        /* Limite la taille maximale */
+  width: 100%;
+  max-width: 450px;
   height: auto;
   display: block;
   margin: 0 auto;
 }
 
-/* COLONNE DU TEXTE + BOUTONS */
+/* TEXT COLUMN + BUTTONS */
 .hero-text {
-  flex: 1 1 45%;           /* Ajusté pour meilleur équilibre */
-  padding-right: 2rem;     /* Espace à droite du texte */
+  flex: 1 1 45%;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to left but will be centered on mobile */
 }
 
 .hero-text h1 {
-  font-size: 3.5rem;       /* Taille réduite pour être plus adaptative */
-  font-weight: 800;        /* Gras */
-  margin-bottom: 2rem;     /* Espace sous le titre */
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 6.5rem;
   line-height: 1.2;
+  color: #333;
 }
 
 .hero-text p {
-  font-size: 1.2rem;       /* Plus petit que le titre */
-  font-weight: 500;        /* Normal */
-  color: #555;             /* Couleur de texte plus douce */
-  margin-bottom: 3rem;     /* Espace sous le sous-titre */
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  margin-top: 20px;
 }
 
-/* Les logos de téléchargement */
+/* Download buttons - enlarged and centered with text on mobile */
 .store-buttons {
   display: flex;
-  gap: 1.5rem;              /* Plus d'espace entre les boutons */
-  flex-wrap: wrap;         /* Si trop serré, passe sur la ligne suivante */
+  gap: 2rem; /* Increased gap between buttons */
+  flex-wrap: wrap;
+  align-self: flex-start; /* Align with text on desktop */
+  
 }
 
 .store-buttons a {
-  display: block;          /* Permet de mieux contrôler les dimensions */
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.store-buttons a:hover {
+  transform: scale(1.05);
 }
 
 .store-buttons img {
-  width: 960px;            /* Taille ajustée à 180px standard */
-  max-width: 920px;         /* S'assure que l'image ne dépasse pas */
-  height: auto;            /* Maintient les proportions */
+  width: 220px; /* Increased from 190px to make buttons larger */
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15)); /* Added shadow for better visibility */
 }
 
-/* Grand écran: ajustements pour meilleure proportion */
+/* Large screens */
 @media (min-width: 1400px) {
   .hero-content {
     max-width: 1400px;
   }
   
   .hero-text h1 {
-    font-size: 4.5rem;
+    font-size: 4rem;
   }
   
   .store-buttons img {
-    width: 200px;          /* Plus grand sur très grands écrans */
+    width: 240px; /* Even larger on big screens */
   }
 }
 
-/* Écran moyen: tablettes et petits ordinateurs */
+/* Medium screens */
 @media (max-width: 992px) {
   .hero-text h1 {
     font-size: 3rem;
@@ -98,18 +111,22 @@
   }
   
   .store-buttons img {
-    width: 160px;          /* Légèrement plus petit sur écrans moyens */
+    width: 200px; /* Still fairly large on medium screens */
+  }
+  
+  .store-buttons {
+    gap: 1.5rem;
   }
 }
 
-/* RESPONSIVITÉ sur mobile */
+/* RESPONSIVE - mobile */
 @media (max-width: 768px) {
   .hero {
     padding: 2rem 0;
   }
   
   .hero-content {
-    flex-direction: column-reverse; /* Place l'image en dessous du texte */
+    flex-direction: column;
   }
   
   .hero-image,
@@ -121,17 +138,25 @@
   }
   
   .hero-text {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
+    order: 1;
+    align-items: center; /* Center all text content on mobile */
+  }
+  
+  .hero-image {
+    order: 2;
   }
   
   .hero-text h1 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    text-align: center;
   }
   
   .hero-text p {
     font-size: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
   }
   
   .hero-image img {
@@ -141,26 +166,29 @@
   
   .store-buttons {
     justify-content: center;
-    width: 100%;           /* Corrigé: 30px était trop petit */
-    gap: 1rem;             /* Moins d'espace sur mobile */
+    width: 100%;
+    gap: 1.8rem; /* Increased gap for better spacing */
+    align-self: center; /* Center with the text */
   }
   
   .store-buttons img {
-    width: 150px;          /* Taille ajustée pour mobile */
+    width: 180px; /* Larger buttons on mobile */
   }
 }
 
-/* Très petits écrans */
+/* Small screens */
 @media (max-width: 480px) {
   .hero-text h1 {
     font-size: 2rem;
   }
   
   .store-buttons {
-    gap: 0.8rem;
+    flex-direction: column; /* Stack buttons on very small screens */
+    align-items: center;
+    gap: 1.5rem;
   }
   
   .store-buttons img {
-    width: 135px;          /* Plus petit sur très petits écrans */
+    width: 200px; /* Even larger on small screens for better tap targets */
   }
 }

@@ -1,75 +1,155 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 
-// Import des styles Slick
+// Import Slick styles
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-// Importez votre fichier CSS pour personnaliser le design
+// Import CSS
 import './ServicesSlider.css';
 
-// Import des images (adaptez les chemins selon votre projet)
-import flightImg from '/Users/mac/my-landing-page/src/assets/Door.svg';
-import foodImg from '/Users/mac/my-landing-page/src/assets/Door1.svg';
-import discoverImg from '/Users/mac/my-landing-page/src/assets/Door2.svg';
-import esimImg from '/Users/mac/my-landing-page/src/assets/Door3.svg';
-import accommodationImg from '/Users/mac/my-landing-page/src/assets/Door4.svg';
+// Use relative imports instead of absolute paths
+import flightImg from '../../assets/Door.svg';
+import foodImg from '../../assets/Door1.svg';
+import discoverImg from '../../assets/Door2.svg';
+import esimImg from '../../assets/Door3.svg';
+import accommodationImg from '../../assets/Door4.svg';
 
 const ServicesSlider = () => {
-  // Paramètres du slider react-slick
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Calculate slides to show based on screen width
+  const getSlidesToShow = () => {
+    if (windowWidth < 480) return 1;
+    if (windowWidth < 768) return 1.2; // Show partial slide on mobile
+    if (windowWidth < 992) return 2;
+    if (windowWidth < 1200) return 2.5; // Show partial slide on tablets
+    return 3;
+  };
+
+  // Calculate center padding based on window width
+  const getCenterPadding = () => {
+    if (windowWidth < 480) return '30px';
+    if (windowWidth < 768) return '40px';
+    return '60px';
+  };
+
+  // Slider settings optimized for full-width experience
   const settings = {
-    dots: true,          // Affiche les points de navigation
-    infinite: true,      // Boucle infinie
-    speed: 300,          // Vitesse de transition (ms)
-    slidesToShow: 3,     // Nombre de slides visibles
-    slidesToScroll: 1,   // Nombre de slides à défiler par action
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: getSlidesToShow(),
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    arrows: true,
+    centerMode: true,
+    centerPadding: getCenterPadding(),
     responsive: [
       {
-        breakpoint: 768, // En-dessous de 768px (mobile/tablette)
+        breakpoint: 1200,
         settings: {
-          slidesToShow: 1
+          slidesToShow: 2.5,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '60px'
+        }
+      },
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '50px'
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1.2,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '40px'
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: '30px'
         }
       }
     ]
   };
 
+  // Service data with descriptions
+  const services = [
+    { 
+      img: foodImg,
+      alt: "Food", 
+      title: "Food",
+      description: "Discover local cuisine" 
+    },
+    { 
+      img: flightImg,
+      alt: "Flight", 
+      title: "Flight",
+      description: "Book your flights" 
+    },
+    { 
+      img: discoverImg,
+      alt: "Discover", 
+      title: "Discover",
+      description: "Explore Morocco" 
+    },
+    { 
+      img: esimImg,
+      alt: "eSIM", 
+      title: "eSIM",
+      description: "Stay connected" 
+    },
+    { 
+      img: accommodationImg,
+      alt: "Accommodation", 
+      title: "Accommodation",
+      description: "Find the perfect stay" 
+    }
+  ];
+
   return (
-    <div id="services" className="services-slider-wrapper">
-      {/* Conteneur du titre et du slider */}
+    <section id="services" className="services-slider-wrapper">
       <div className="services-slider-container">
         <h2 className="services-title">Our Services</h2>
+        <p className="services-subtitle">Everything you need for your Moroccan adventure</p>
+        
         <Slider {...settings}>
-          {/* Slide 1 : Food */}
-          <div className="service-slide">
-            <img src={foodImg} alt="Food" className="service-image" />
-          </div>
-
-          {/* Slide 2 : Flight */}
-          <div className="service-slide">
-            <img src={flightImg} alt="Flight" className="service-image" />
-          </div>
-
-          {/* Slide 3 : Discover */}
-          <div className="service-slide">
-            <img src={discoverImg} alt="Discover" className="service-image" />
-          </div>
-
-          {/* Slide 4 : eSIM */}
-          <div className="service-slide">
-            <img src={esimImg} alt="eSIM" className="service-image" />
-          </div>
-
-          {/* Slide 5 : Accommodation */}
-          <div className="service-slide">
-            <img
-              src={accommodationImg}
-              alt="Accommodation"
-              className="service-image"
-            />
-          </div>
+          {services.map((service, index) => (
+            <div className="service-slide" key={index}>
+              <img src={service.img} alt={service.alt} className="service-image" />
+              <h3 className="service-title">{service.title}</h3>
+              <p className="service-description">{service.description}</p>
+            </div>
+          ))}
         </Slider>
       </div>
-    </div>
+    </section>
   );
 };
 

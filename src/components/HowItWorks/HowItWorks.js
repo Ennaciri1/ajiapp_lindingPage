@@ -6,8 +6,8 @@ const HowItWorks = () => {
     <section id="howitworks" className="how-it-works-section">
       {/* Container blanc arrondi au centre */}
       <div className="how-it-works-container">
-        {/* Titre principal */}
-        <h2 className="how-it-works-title">How its Works ?</h2>
+        {/* Titre principal - Fixed typo */}
+        <h2 className="how-it-works-title">How It Works</h2>
         {/* Sous-titre */}
         <p className="how-it-works-subtitle">Very Simple</p>
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import phone from '/Users/mac/my-landing-page/src/assets/phone.svg';
 import './WhyAji.css';
+// Use relative import instead of absolute path
+import phone from '../../assets/phone.svg';
 
 const WhyAji = () => {
   return (
